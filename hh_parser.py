@@ -1,4 +1,5 @@
 import requests
+import json
 import csv
 
 
@@ -64,6 +65,10 @@ def save_to_csv(vacancies, filename="vacancies.csv"):
 
             writer.writerow([name, salary_str, city, link])
 
+def save_to_json(vacancies, filename="vacancies.json"):
+            with open(filename, mode="w", encoding="utf-8") as file:
+                json.dump(vacancies, file, indent=4, ensure_ascii=False)            
+
 
 def main():
     keyword = input("🔎 Введите название вакансии: ")
@@ -72,9 +77,17 @@ def main():
     print(f"📍 Поиск по региону: {city} (area_id = {area_id})")
 
     vacancies = get_all_vacancies(keyword, area_id)
-    save_to_csv(vacancies)
-    print(f"✅ Сохранено {len(vacancies)} вакансий в 'vacancies.csv'")
 
+    if not vacancies:
+        print("⚠️ Вакансии не найдены.")
+        return
 
-if __name__ == "__main__":
-    main()
+    format_choice = input("💾 В каком формате сохранить? (csv/json): ").strip().lower()
+
+    if format_choice == "json":
+        save_to_json(vacancies)
+        print(f"✅ Сохранено {len(vacancies)} вакансий в 'vacancies.json'")
+    else:
+        save_to_csv(vacancies)
+        print(f"✅ Сохранено {len(vacancies)} вакансий в 'vacancies.csv'")
+
