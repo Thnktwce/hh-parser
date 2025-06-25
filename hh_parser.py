@@ -1,6 +1,6 @@
 import requests
-import json
 import csv
+import json
 
 
 def get_area_id_by_name(city_name):
@@ -15,7 +15,7 @@ def get_area_id_by_name(city_name):
             for city in region["areas"]:
                 if city_name.lower() in city["name"].lower():
                     return city["id"]
-    return 1  # по умолчанию Москва
+    return 1  # Москва по умолчанию
 
 
 def get_all_vacancies(keyword, area_id):
@@ -65,14 +65,19 @@ def save_to_csv(vacancies, filename="vacancies.csv"):
 
             writer.writerow([name, salary_str, city, link])
 
+
 def save_to_json(vacancies, filename="vacancies.json"):
-            with open(filename, mode="w", encoding="utf-8") as file:
-                json.dump(vacancies, file, indent=4, ensure_ascii=False)            
+    with open(filename, mode="w", encoding="utf-8") as file:
+        json.dump(vacancies, file, indent=4, ensure_ascii=False)
 
 
 def main():
-    keyword = input("🔎 Введите название вакансии: ")
-    city = input("🏙️ Введите город (например, Москва): ")
+    print("🔎 Введите название вакансии:")
+    keyword = input().strip() or "python junior"
+
+    print("🏙️ Введите город (например, Москва):")
+    city = input().strip() or "Москва"
+
     area_id = get_area_id_by_name(city)
     print(f"📍 Поиск по региону: {city} (area_id = {area_id})")
 
@@ -82,7 +87,8 @@ def main():
         print("⚠️ Вакансии не найдены.")
         return
 
-    format_choice = input("💾 В каком формате сохранить? (csv/json): ").strip().lower()
+    print("💾 В каком формате сохранить? (csv/json):")
+    format_choice = input().strip().lower() or "csv"
 
     if format_choice == "json":
         save_to_json(vacancies)
@@ -91,3 +97,6 @@ def main():
         save_to_csv(vacancies)
         print(f"✅ Сохранено {len(vacancies)} вакансий в 'vacancies.csv'")
 
+
+if __name__ == "__main__":
+    main()
