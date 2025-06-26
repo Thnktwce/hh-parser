@@ -1,56 +1,113 @@
 
-# HH.ru Vacancy Parser 🧠💼
+<p align="center">
+  <img src="banner.png" alt="HH Parser Banner" style="max-width: 100%;">
+</p>
 
-Vacancy parser from hh.ru in Python.  
-Gets a list of vacancies by keyword and saves it to a CSV file.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10+-blue?logo=python">
+  <img src="https://img.shields.io/badge/License-MIT-green.svg">
+  <img src="https://img.shields.io/badge/Status-In%20progress-yellow">
+</p>
 
-## 📌 Features
+# 🛠️ HH Parser — Парсер вакансий с hh.ru | HH.ru Job Vacancy Parser
 
-- Search jobs by keyword (e.g. `python junior`)
-- Retrieve title, salary, city and reference
-- Save data to `vacancies.csv`.
+> 🇷🇺 Русский ниже | 🇬🇧 English above
 
 ---
 
-## 🚀 How to use
+## 🇬🇧 English Description
 
-### Installation
+A simple but powerful Python script that uses the official **hh.ru API** to collect job vacancies based on a keyword and location.
 
-Requires Python 3.7+ 
-Install dependencies:
+---
 
-pip install requests
-Run
-bash
-Copy
-Edit
+### 🔧 Features
+
+- Search vacancies by keyword (e.g., "python junior")
+- Support for any region (e.g., Moscow, Saint Petersburg)
+- Collects **all pages** of results (not just page 1)
+- Saves data to `CSV` or `JSON` by user choice
+- Parses job title, salary, city, and link
+- Handles Russian text and Unicode correctly
+
+---
+
+### 🚀 How to Run
+
+1. Clone the repository:
+
+
+git clone https://github.com/Thnktwce/hh-parser.git
+cd hh-parser
 python hh_parser.py
-Type in what to look for, for example:
+ 
+You will be prompted to enter:
+🔎 Enter job title: python junior
+🏙️ Enter city: Moscow
+💾 Save format (csv/json): json
+Result will be saved as vacancies.csv or vacancies.json.
 
-bash
-Copy
-Edit
-Enter the job title to search for: python junior
-✅ Saved 20 jobs in 'vacancies.csv'
-📝 Example result
-Example row in vacancies.csv:
+💼 Example Output
+CSV example:
 
-Title Salary City Reference
-Junior Python Developer 80 000 - 120 000 RUB Moscow https://hh.ru/vacancy/123456789
+Title	            Salary	            City	Link
+Python Developer	100000 - 150000 RUB	Moscow	https://hh.ru/vacancy/123456
 
-💡 Ideas for improvement
-Collect all pages (not only 1st page)
+🧰 Technologies
+Python 3.10+
 
-Support other regions (area ID)
+requests
 
-Saving in JSON
+hh.ru API
 
-Telegram bot
+CSV & JSON
 
-Flask web-interface
+🇷🇺 Описание на русском
+Простой, но мощный Python-скрипт для сбора вакансий с сайта hh.ru через их официальное API.
+Подходит для портфолио, аналитики и автоматизации HR-задач.
 
-Salary chart by jobs
+🔧 Возможности
+Поиск вакансий по ключевому слову (например, "python junior")
 
-👤 Author
-Kirill Koteluk
-🎯 Beginner Python developer. I'm learning the language and creating useful tools for portfolio and remote work.
+Поддержка любого региона (Москва, Питер и др.)
+
+Сбор всех страниц результатов
+
+Сохранение в CSV или JSON на выбор пользователя
+
+Парсинг названия, зарплаты, города и ссылки
+
+Корректная работа с русским текстом
+
+🚀 Как запустить
+Клонируйте репозиторий:
+git clone https://github.com/Thnktwce/hh-parser.git
+
+cd hh-parser
+python hh_parser.py
+
+Программа запросит:
+🔎 Введите название вакансии: python junior
+🏙️ Введите город (например, Москва): Санкт-Петербург
+💾 В каком формате сохранить? (csv/json): csv
+Данные сохранятся в vacancies.csv или vacancies.json
+
+💼 Пример результата
+Название	        Зарплата	        Город	Ссылка
+Python-разработчик	100000 - 150000 RUB	Москва	https://hh.ru/vacancy/123456
+
+🧰 Используемые технологии
+Python 3.10+
+
+requests
+
+hh.ru API
+
+CSV и JSON
+
+👨‍💻 Автор / Author
+Разработчик: Kirill Kotelyuk @Thnktwce
+This project is part of a self-learning portfolio to get a remote job or freelance work in Python.
+
+🏁 License / Лицензия
+MIT — free to use and modify.
